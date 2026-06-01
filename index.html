@@ -20,7 +20,6 @@
     }
     .font-heading { font-family: 'Poppins', sans-serif; }
     
-    /* Animasi Dasar */
     @keyframes slideUpFade { 
       from { opacity: 0; transform: translateY(30px); } 
       to { opacity: 1; transform: translateY(0); } 
@@ -29,7 +28,6 @@
     .animate-delay-1 { animation-delay: 0.1s; opacity: 0; }
     .animate-delay-2 { animation-delay: 0.2s; opacity: 0; }
     
-    /* Animasi Kertas Disobek (Rip) */
     @keyframes ripOpen {
       0% { opacity: 0; transform: translateY(-40px) scale(0.95); filter: blur(5px); }
       60% { opacity: 1; transform: translateY(5px) scale(1.02); filter: blur(0); }
@@ -37,7 +35,6 @@
     }
     .animate-rip { animation: ripOpen 0.7s cubic-bezier(0.34, 1.56, 0.64, 1) forwards; }
 
-    /* Animasi "Tada!" untuk Ikon Lulus */
     @keyframes tada {
       0% { transform: scale(1); }
       10%, 20% { transform: scale(0.9) rotate(-3deg); }
@@ -47,7 +44,6 @@
     }
     .animate-tada { animation: tada 1.2s ease-in-out forwards; animation-delay: 0.5s; }
 
-    /* Animasi Bersinar (Glow Pulse) */
     @keyframes glowPulse {
       0% { box-shadow: 0 0 10px rgba(16, 185, 129, 0.4), 0 0 20px rgba(16, 185, 129, 0.2); }
       50% { box-shadow: 0 0 25px rgba(16, 185, 129, 0.8), 0 0 40px rgba(16, 185, 129, 0.4); transform: scale(1.05); }
@@ -55,7 +51,6 @@
     }
     .animate-glow { animation: glowPulse 2s infinite; }
 
-    /* --- EFEK KERTAS SOBEK ZIG-ZAG --- */
     .kertas-sobek {
       position: relative;
       background: linear-gradient(180deg, #f0fdf4 0%, #ffffff 100%);
@@ -118,8 +113,7 @@
             <h2 class="font-heading text-xl md:text-2xl text-slate-800 mb-2">Waktu Menuju Pengumuman</h2>
             <p class="text-slate-500 mb-6 font-medium">Pengumuman dibuka: <strong class="text-blue-700">2 Juni 2026, Pukul 10:00 WIB</strong></p>
             
-            <div id="countdown-display" class="flex justify-center gap-3 md:gap-6 text-center">
-              </div>
+            <div id="countdown-display" class="flex justify-center gap-3 md:gap-6 text-center"></div>
           </div>
         </div>
 
@@ -150,7 +144,6 @@
             Cek Kelulusan Siswa 
           </button>
         </div>
-
       </main>
 
       <footer class="text-slate-400 text-center py-6 text-sm mt-auto border-t border-slate-200 bg-white/50">
@@ -202,76 +195,87 @@
   <script>
     lucide.createIcons();
 
+    // ==========================================
+    // DATA SISWA (Bisa diisi link URL foto)
+    // ==========================================
     const students = [
-      { nama: "AFIF GEMPAR SAPUTRA", nisn: "132922717", status: "Lulus" },
-      { nama: "AINIYA FAIDA AZMI", nisn: "3138358947", status: "Lulus" },
-      { nama: "Alif Firdaus", nisn: "133825182", status: "Lulus" },
-      { nama: "ANANDA KHALIFAH SAKHI", nisn: "147712389", status: "Lulus" },
-      { nama: "Astilla Azzuma Huda", nisn: "131470169", status: "Lulus" },
-      { nama: "CIKAL RAZITA KENCANA", nisn: "3135375390", status: "Lulus" },
-      { nama: "DEO TRI SAPUTRA", nisn: "122666659", status: "Lulus" },
-      { nama: "DINAR RHUUL HAQ", nisn: "3136789630", status: "Lulus" },
-      { nama: "IRENA ZAHRA", nisn: "3130798802", status: "Lulus" },
-      { nama: "JEANNIFER LENKA", nisn: "3133822969", status: "Lulus" },
-      { nama: "LULU NOER FATHIYYA", nisn: "123652355", status: "Lulus" },
-      { nama: "MUAMMAR GIBRAN WISESHA", nisn: "3121174820", status: "Lulus" },
-      { nama: "ANNICO YANUARN A", nisn: "0123456789", status: "Lulus" },
-      { nama: "MUHAMAD SATRIO", nisn: "133912477", status: "Lulus" },
-      { nama: "MUHAMMAD AZKA ABDUL AZIZ", nisn: "3128355844", status: "Lulus" },
-      { nama: "MUHAMMAD FAEYZA RIZQILLAH ALGHIFARI", nisn: "3134856886", status: "Lulus" },
-      { nama: "MUHAMMAD FAREL AQIL", nisn: "126449533", status: "Lulus" },
-      { nama: "MUHAMMAD SYAFIQ KHOIRUL HIDAYAT", nisn: "3133971682", status: "Lulus" },
-      { nama: "MUTIA NUR SYAQILA", nisn: "3138044707", status: "Lulus" },
-      { nama: "NABIL HADRIAN", nisn: "3132204638", status: "Lulus" },
-      { nama: "NIKEN WIDHIYANTI MUSTOKOWENI", nisn: "3133210219", status: "Lulus" },
-      { nama: "Rangga Wahyu Aditya", nisn: "122413433", status: "Lulus" },
-      { nama: "SAFINKA BUNGA AZ ZAAFARANI", nisn: "132784378", status: "Lulus" },
-      { nama: "SARAH NOVAELISA", nisn: "3127526146", status: "Lulus" },
-      { nama: "SITI ARFAH HADI NAFSIYAH", nisn: "3120522921", status: "Lulus" },
-      { nama: "Sultan Ardiansyah Gaffar", nisn: "3134448215", status: "Lulus" },
-      { nama: "SYAHWAL IRHAM DENAYA", nisn: "135474640", status: "Lulus" },
-      { nama: "WIRA ARGA KHARISMA", nisn: "3129078587", status: "Lulus" },
-      { nama: "Yoel Sem Aprilio Rajagukguk", nisn: "133214969", status: "Lulus" },
-      { nama: "ZASKIA ANZALIA", nisn: "3139411810", status: "Lulus" },
-      { nama: "AISLA KEANDRA AZANI TYAS", nisn: "3124349552", status: "Lulus" },
-      { nama: "AMIRA ZALIANTI", nisn: "3128161089", status: "Lulus" },
-      { nama: "ANDINIE KINARA PUTRI", nisn: "3134546456", status: "Lulus" },
-      { nama: "ARKANA DIVA SASHI KIRANA", nisn: "3138298638", status: "Lulus" },
-      { nama: "BILQIS RABIATUL AZIZAH", nisn: "3136720292", status: "Lulus" },
-      { nama: "CHERYL AYUNDA OCTAVIA", nisn: "3138300180", status: "Lulus" },
-      { nama: "DAVIN ARITRA FABIAN", nisn: "3125034086", status: "Lulus" },
-      { nama: "ELVINA NASHITA WIDATI", nisn: "138936851", status: "Lulus" },
-      { nama: "FAIDZLY ANJAMI", nisn: "3121096474", status: "Lulus" },
-      { nama: "Fajri Anwar Gunawan", nisn: "134268877", status: "Lulus" },
-      { nama: "FARHANA SOFIAN LATIF", nisn: "136381905", status: "Lulus" },
-      { nama: "Ilman Hafidz Septiansyah", nisn: "127557095", status: "Lulus" },
-      { nama: "IVAN ARDIAN", nisn: "3131551749", status: "Lulus" },
-      { nama: "LULU DZIHAN NAFISAH", nisn: "3136743806", status: "Lulus" },
-      { nama: "MAURA SENJA MAULIDA", nisn: "132348777", status: "Lulus" },
-      { nama: "MUHAMAD FAREL PRATAMA", nisn: "3128473726", status: "Lulus" },
-      { nama: "MUHAMMAD DANNIS ADITYA", nisn: "3137091663", status: "Lulus" },
-      { nama: "Muhammad Hilman Baihaqi", nisn: "139312127", status: "Lulus" },
-      { nama: "MUHAMMAD QAIS ALFATIH", nisn: "3128504198", status: "Lulus" },
-      { nama: "MUHAMMAD REZA FAHRI", nisn: "3123069736", status: "Lulus" },
-      { nama: "RAFA FEBRIANSYAH", nisn: "3146058919", status: "Lulus" },
-      { nama: "RENDRA ANATHA YOGA", nisn: "3121452818", status: "Lulus" },
-      { nama: "SEHAN REZKI FEBRIAWAN", nisn: "3137290417", status: "Lulus" },
-      { nama: "SHALIKA ANDYNA WIJAYA", nisn: "138313093", status: "Lulus" },
-      { nama: "SYIFAUL KARIMAH", nisn: "136721220", status: "Lulus" },
-      { nama: "WAHYUDI HIDAYAT", nisn: "143543188", status: "Lulus" },
-      { nama: "WIRA ARYASATYA KRESNA", nisn: "137784545", status: "Lulus" },
-      { nama: "WISNU HAIKAL TARUNA", nisn: "137301922", status: "Lulus" },
-      { nama: "YUMNA SALSABILA", nisn: "136397924", status: "Lulus" },
-      { nama: "ZAHIRA FEBY FIRJANAH", nisn: "139566874", status: "Lulus" }
+      // Contoh jika ingin memasukkan foto khusus:
+      // { nama: "AFIF GEMPAR SAPUTRA", nisn: "132922717", status: "Lulus", foto: "https://link-google-drive.com/foto-afif.jpg" },
+      { nama: "AFIF GEMPAR SAPUTRA", nisn: "132922717", status: "Lulus", foto: "" },
+      { nama: "AINIYA FAIDA AZMI", nisn: "3138358947", status: "Lulus", foto: "" },
+      { nama: "Alif Firdaus", nisn: "133825182", status: "Lulus", foto: "" },
+      { nama: "ANANDA KHALIFAH SAKHI", nisn: "147712389", status: "Lulus", foto: "" },
+      { nama: "Astilla Azzuma Huda", nisn: "131470169", status: "Lulus", foto: "" },
+      { nama: "CIKAL RAZITA KENCANA", nisn: "3135375390", status: "Lulus", foto: "" },
+      { nama: "DEO TRI SAPUTRA", nisn: "122666659", status: "Lulus", foto: "" },
+      { nama: "DINAR RHUUL HAQ", nisn: "3136789630", status: "Lulus", foto: "" },
+      { nama: "IRENA ZAHRA", nisn: "3130798802", status: "Lulus", foto: "" },
+      { nama: "JEANNIFER LENKA", nisn: "3133822969", status: "Lulus", foto: "" },
+      { nama: "LULU NOER FATHIYYA", nisn: "123652355", status: "Lulus", foto: "" },
+      { nama: "MUAMMAR GIBRAN WISESHA", nisn: "3121174820", status: "Lulus", foto: "" },
+      { nama: "MUHAMAD SATRIO", nisn: "133912477", status: "Lulus", foto: "" },
+      { nama: "MUHAMMAD AZKA ABDUL AZIZ", nisn: "3128355844", status: "Lulus", foto: "" },
+      { nama: "MUHAMMAD FAEYZA RIZQILLAH ALGHIFARI", nisn: "3134856886", status: "Lulus", foto: "" },
+      { nama: "MUHAMMAD FAREL AQIL", nisn: "126449533", status: "Lulus", foto: "" },
+      { nama: "MUHAMMAD SYAFIQ KHOIRUL HIDAYAT", nisn: "3133971682", status: "Lulus", foto: "" },
+      { nama: "MUTIA NUR SYAQILA", nisn: "3138044707", status: "Lulus", foto: "" },
+      { nama: "NABIL HADRIAN", nisn: "3132204638", status: "Lulus", foto: "" },
+      { nama: "NIKEN WIDHIYANTI MUSTOKOWENI", nisn: "3133210219", status: "Lulus", foto: "" },
+      { nama: "Rangga Wahyu Aditya", nisn: "0122413433", status: "Lulus", foto: "https://drive.google.com/file/d/1xEkFUif_zcGX_N7O2j44u-zzlqrivyY8/view?usp=drive_link" },
+      { nama: "SAFINKA BUNGA AZ ZAAFARANI", nisn: "132784378", status: "Lulus", foto: "" },
+      { nama: "SARAH NOVAELISA", nisn: "3127526146", status: "Lulus", foto: "" },
+      { nama: "SITI ARFAH HADI NAFSIYAH", nisn: "3120522921", status: "Lulus", foto: "" },
+      { nama: "Sultan Ardiansyah Gaffar", nisn: "3134448215", status: "Lulus", foto: "" },
+      { nama: "SYAHWAL IRHAM DENAYA", nisn: "135474640", status: "Lulus", foto: "" },
+      { nama: "WIRA ARGA KHARISMA", nisn: "3129078587", status: "Lulus", foto: "" },
+      { nama: "Yoel Sem Aprilio Rajagukguk", nisn: "133214969", status: "Lulus", foto: "" },
+      { nama: "ZASKIA ANZALIA", nisn: "3139411810", status: "Lulus", foto: "" },
+      { nama: "AISLA KEANDRA AZANI TYAS", nisn: "3124349552", status: "Lulus", foto: "" },
+      { nama: "AMIRA ZALIANTI", nisn: "3128161089", status: "Lulus", foto: "" },
+      { nama: "ANDINIE KINARA PUTRI", nisn: "3134546456", status: "Lulus", foto: "" },
+      { nama: "ARKANA DIVA SASHI KIRANA", nisn: "3138298638", status: "Lulus", foto: "" },
+      { nama: "BILQIS RABIATUL AZIZAH", nisn: "3136720292", status: "Lulus", foto: "" },
+      { nama: "CHERYL AYUNDA OCTAVIA", nisn: "3138300180", status: "Lulus", foto: "" },
+      { nama: "DAVIN ARITRA FABIAN", nisn: "3125034086", status: "Lulus", foto: "" },
+      { nama: "ELVINA NASHITA WIDATI", nisn: "138936851", status: "Lulus", foto: "" },
+      { nama: "FAIDZLY ANJAMI", nisn: "3121096474", status: "Lulus", foto: "" },
+      { nama: "Fajri Anwar Gunawan", nisn: "134268877", status: "Lulus", foto: "" },
+      { nama: "FARHANA SOFIAN LATIF", nisn: "136381905", status: "Lulus", foto: "" },
+      { nama: "Ilman Hafidz Septiansyah", nisn: "127557095", status: "Lulus", foto: "" },
+      { nama: "IVAN ARDIAN", nisn: "3131551749", status: "Lulus", foto: "" },
+      { nama: "LULU DZIHAN NAFISAH", nisn: "3136743806", status: "Lulus", foto: "" },
+      { nama: "MAURA SENJA MAULIDA", nisn: "132348777", status: "Lulus", foto: "" },
+      { nama: "MUHAMAD FAREL PRATAMA", nisn: "3128473726", status: "Lulus", foto: "" },
+      { nama: "MUHAMMAD DANNIS ADITYA", nisn: "3137091663", status: "Lulus", foto: "" },
+      { nama: "Muhammad Hilman Baihaqi", nisn: "139312127", status: "Lulus", foto: "" },
+      { nama: "MUHAMMAD QAIS ALFATIH", nisn: "3128504198", status: "Lulus", foto: "" },
+      { nama: "MUHAMMAD REZA FAHRI", nisn: "3123069736", status: "Lulus", foto: "" },
+      { nama: "RAFA FEBRIANSYAH", nisn: "3146058919", status: "Lulus", foto: "" },
+      { nama: "RENDRA ANATHA YOGA", nisn: "3121452818", status: "Lulus", foto: "" },
+      { nama: "SEHAN REZKI FEBRIAWAN", nisn: "3137290417", status: "Lulus", foto: "" },
+      { nama: "SHALIKA ANDYNA WIJAYA", nisn: "138313093", status: "Lulus", foto: "" },
+      { nama: "SYIFAUL KARIMAH", nisn: "136721220", status: "Lulus", foto: "" },
+      { nama: "WAHYUDI HIDAYAT", nisn: "143543188", status: "Lulus", foto: "" },
+      { nama: "WIRA ARYASATYA KRESNA", nisn: "137784545", status: "Lulus", foto: "" },
+      { nama: "WISNU HAIKAL TARUNA", nisn: "137301922", status: "Lulus", foto: "" },
+      { nama: "YUMNA SALSABILA", nisn: "136397924", status: "Lulus", foto: "" },
+      { nama: "ZAHIRA FEBY FIRJANAH", nisn: "139566874", status: "Lulus", foto: "" }
     ];
 
-    // LOGIKA COUNTDOWN TIMER (2 Juni 2026 10:00 WIB)
-    const announcementDate = new Date('2026-06-02T10:00:00+07:00');
-    let timerInterval;
+    // ==========================================
+// PENGATURAN COUNTDOWN
+// true  = countdown aktif
+// false = countdown dimatikan (langsung buka)
+// ==========================================
+const COUNTDOWN_ENABLED = true;
+
+const announcementDate = new Date('2026-06-02T10:00:00+07:00');
+let timerInterval;
 
     function isAnnouncementOpen() {
-      return new Date() >= announcementDate;
-    }
+  if (!COUNTDOWN_ENABLED) return true;
+  return new Date() >= announcementDate;
+}
 
     function updateCountdown() {
       const now = new Date();
@@ -280,11 +284,8 @@
       const container = document.getElementById('countdown-container');
       const btnCekKelulusan = document.getElementById('btn-cek-kelulusan');
 
-      // JIKA WAKTU HABIS
       if (diff <= 0) {
         clearInterval(timerInterval);
-        
-        // Ganti timer dengan pengumuman buka
         if (container) {
           container.innerHTML = `
             <div class="bg-blue-50 border border-blue-200 text-blue-800 p-5 rounded-2xl flex items-center justify-center gap-4 shadow-sm animate-in">
@@ -294,8 +295,6 @@
           `;
           lucide.createIcons();
         }
-        
-        // MUNCULKAN TOMBOL CEK KELULUSAN
         if (btnCekKelulusan) {
           btnCekKelulusan.classList.remove('hidden');
           btnCekKelulusan.classList.add('animate-in');
@@ -303,7 +302,6 @@
         return;
       }
 
-      // JIKA BELUM HABIS, HITUNG MUNDUR BERJALAN
       const days = Math.floor(diff / 86400000);
       const hours = Math.floor((diff % 86400000) / 3600000);
       const minutes = Math.floor((diff % 3600000) / 60000);
@@ -324,10 +322,31 @@
       }
     }
 
-    // Jalankan timer saat pertama kali diload dan setiap detik
+if (!COUNTDOWN_ENABLED) {
+  document.getElementById('countdown-container').innerHTML = `
+    <div class="bg-emerald-50 border border-emerald-200 text-emerald-800 p-5 rounded-2xl flex items-center justify-center gap-4 shadow-sm">
+      <div class="bg-emerald-100 p-2.5 rounded-full">
+        <i data-lucide="unlock" class="w-6 h-6 text-emerald-600"></i>
+      </div>
+      <p class="font-semibold text-lg">
+        Pengumuman kelulusan telah dibuka.
+      </p>
+    </div>
+  `;
+
+  document.getElementById('btn-cek-kelulusan').classList.remove('hidden');
+  lucide.createIcons();
+} else {
+  updateCountdown();
+  timerInterval = setInterval(updateCountdown, 1000);
+}
+
     updateCountdown();
     timerInterval = setInterval(updateCountdown, 1000);
 
+    // ==========================================
+    // NAVIGASI & NOTIFIKASI
+    // ==========================================
     function showCheckPage() {
       document.getElementById('page-home').classList.add('hidden');
       document.getElementById('page-check').classList.remove('hidden');
@@ -373,8 +392,19 @@
       }, 250);
     }
 
+    // ==========================================
+    // RENDER KARTU SISWA (DENGAN FOTO)
+    // ==========================================
     function renderStudent(s) {
       const isLulus = s.status === 'Lulus';
+      
+      // LOGIKA FOTO PROFIL: 
+      // Jika url foto kosong, otomatis buatkan avatar dari inisial nama.
+      // Warna background avatar disesuaikan: Lulus (Hijau), Tidak Lulus (Merah)
+      const bgColor = isLulus ? '10b981' : 'f43f5e';
+      const fotoUrl = s.foto && s.foto !== "" 
+          ? s.foto 
+          : `https://ui-avatars.com/api/?name=${encodeURIComponent(s.nama)}&background=${bgColor}&color=fff&size=150&bold=true`;
       
       if (isLulus) {
         return `
@@ -388,8 +418,12 @@
             <div class="absolute bottom-20 right-10 text-2xl animate-bounce" style="animation-duration: 3s;">🎉</div>
             
             <div class="relative z-10">
-              <div class="inline-flex items-center justify-center w-24 h-24 bg-gradient-to-br from-emerald-100 to-emerald-200 text-emerald-600 rounded-full mb-6 shadow-inner animate-tada">
-                <i data-lucide="check-circle-2" class="w-12 h-12"></i>
+              
+              <div class="relative inline-block mb-6 animate-tada">
+                <img src="${fotoUrl}" alt="Foto Profil" class="w-24 h-24 object-cover rounded-full border-4 border-white shadow-lg bg-emerald-50">
+                <div class="absolute -bottom-2 -right-2 bg-emerald-500 text-white rounded-full p-1.5 border-2 border-white shadow-sm">
+                  <i data-lucide="check" class="w-5 h-5"></i>
+                </div>
               </div>
               
               <div class="space-y-5">
@@ -422,9 +456,14 @@
       } else {
         return `
           <div class="border border-rose-200 bg-rose-50/50 rounded-3xl p-8 text-center relative overflow-hidden mt-6 animate-in">
-            <div class="inline-flex items-center justify-center w-20 h-20 bg-rose-100 text-rose-600 rounded-full mb-6">
-              <i data-lucide="x-circle" class="w-10 h-10"></i>
+            
+            <div class="relative inline-block mb-6">
+              <img src="${fotoUrl}" alt="Foto Profil" class="w-24 h-24 object-cover rounded-full border-4 border-white shadow-lg bg-rose-50">
+              <div class="absolute -bottom-2 -right-2 bg-rose-500 text-white rounded-full p-1.5 border-2 border-white shadow-sm">
+                <i data-lucide="x" class="w-5 h-5"></i>
+              </div>
             </div>
+
             <div class="space-y-4 z-10 relative">
               <div>
                 <p class="text-xs font-bold text-slate-400 uppercase tracking-widest mb-1">Nama Siswa</p>
@@ -513,7 +552,6 @@
         return;
       }
 
-      // Validasi waktu untuk orang awam yang nekat tahu cara membuka halaman cek
       if (!isAnnouncementOpen()) {
         resultArea.innerHTML = showNotification('Pengumuman kelulusan belum dimulai. Harap tunggu hingga pukul 10:00 WIB tanggal 2 Juni 2026.', 'warning');
         lucide.createIcons();
