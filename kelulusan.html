@@ -1,0 +1,413 @@
+<!doctype html>
+<html lang="id" class="h-full">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pengumuman Kelulusan SDN Susukan 08 Pagi</title>
+  
+  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lucide@0.263.0/dist/umd/lucide.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.2/dist/confetti.browser.min.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
+  
+  <style>
+    body { 
+      font-family: 'Inter', sans-serif; 
+      box-sizing: border-box; 
+      -webkit-font-smoothing: antialiased;
+    }
+    .font-heading { font-family: 'Poppins', sans-serif; }
+    
+    /* Animasi Dasar */
+    @keyframes slideUpFade { 
+      from { opacity: 0; transform: translateY(30px); } 
+      to { opacity: 1; transform: translateY(0); } 
+    }
+    .animate-in { animation: slideUpFade 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+    .animate-delay-1 { animation-delay: 0.1s; opacity: 0; }
+    .animate-delay-2 { animation-delay: 0.2s; opacity: 0; }
+    
+    /* Animasi Kertas Disobek (Rip) */
+    @keyframes ripOpen {
+      0% { opacity: 0; transform: translateY(-40px) scale(0.95); filter: blur(5px); }
+      60% { opacity: 1; transform: translateY(5px) scale(1.02); filter: blur(0); }
+      100% { transform: translateY(0) scale(1); }
+    }
+    .animate-rip { animation: ripOpen 0.7s cubic-bezier(0.34, 1.56, 0.64, 1) forwards; }
+
+    /* Animasi "Tada!" untuk Ikon Lulus */
+    @keyframes tada {
+      0% { transform: scale(1); }
+      10%, 20% { transform: scale(0.9) rotate(-3deg); }
+      30%, 50%, 70%, 90% { transform: scale(1.2) rotate(3deg); }
+      40%, 60%, 80% { transform: scale(1.2) rotate(-3deg); }
+      100% { transform: scale(1) rotate(0); }
+    }
+    .animate-tada { animation: tada 1.2s ease-in-out forwards; animation-delay: 0.5s; }
+
+    /* Animasi Bersinar (Glow Pulse) */
+    @keyframes glowPulse {
+      0% { box-shadow: 0 0 10px rgba(16, 185, 129, 0.4), 0 0 20px rgba(16, 185, 129, 0.2); }
+      50% { box-shadow: 0 0 25px rgba(16, 185, 129, 0.8), 0 0 40px rgba(16, 185, 129, 0.4); transform: scale(1.05); }
+      100% { box-shadow: 0 0 10px rgba(16, 185, 129, 0.4), 0 0 20px rgba(16, 185, 129, 0.2); }
+    }
+    .animate-glow { animation: glowPulse 2s infinite; }
+
+    /* --- PERBAIKAN EFEK KERTAS SOBEK ZIG-ZAG --- */
+    .kertas-sobek {
+      position: relative;
+      background: linear-gradient(180deg, #f0fdf4 0%, #ffffff 100%);
+      border-radius: 0 0 2rem 2rem;
+      margin-top: 16px;
+      box-shadow: 0 20px 40px -10px rgba(16, 185, 129, 0.2);
+    }
+    .kertas-sobek::before {
+      content: '';
+      position: absolute;
+      top: -12px; /* Ditarik ke atas agar tidak tertutup */
+      left: 0;
+      right: 0;
+      height: 12px;
+      /* Menggunakan SVG Inline agar pola gerigi 100% sempurna di semua browser */
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 12'%3E%3Cpath d='M0,12 L12,0 L24,12 Z' fill='%23f0fdf4'/%3E%3C/svg%3E");
+      background-repeat: repeat-x;
+      background-size: 24px 12px;
+      /* Memberikan efek bayangan 3D di ujung sobekan */
+      filter: drop-shadow(0px -2px 3px rgba(16, 185, 129, 0.2));
+      z-index: 20;
+    }
+    
+    ::-webkit-scrollbar { height: 8px; width: 8px; }
+    ::-webkit-scrollbar-track { background: #f1f5f9; border-radius: 4px; }
+    ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
+  </style>
+</head>
+
+<body class="h-full bg-slate-50 text-slate-800 relative">
+  <!-- Container Confetti -->
+  <div id="confetti-container" class="fixed inset-0 pointer-events-none z-[100]"></div>
+
+  <div id="app" class="min-h-full flex flex-col w-full overflow-x-hidden">
+    
+    <!-- HALAMAN BERANDA -->
+    <div id="page-home" class="flex-1 flex flex-col">
+      <header class="relative bg-gradient-to-br from-blue-700 via-indigo-700 to-indigo-900 shadow-xl overflow-hidden rounded-b-[2.5rem] md:rounded-b-[4rem] pb-12 pt-16 mb-10">
+        <div class="absolute top-0 left-0 w-full h-full overflow-hidden z-0">
+          <div class="absolute -top-20 -right-20 w-64 h-64 bg-white/10 rounded-full blur-3xl"></div>
+          <div class="absolute bottom-10 -left-10 w-48 h-48 bg-blue-400/20 rounded-full blur-2xl"></div>
+        </div>
+
+        <div class="relative z-10 max-w-4xl mx-auto px-6 text-center">
+          <div class="inline-flex items-center justify-center w-20 h-20 bg-white/10 backdrop-blur-sm border border-white/20 rounded-2xl mb-6 shadow-inner animate-in">
+            <i data-lucide="graduation-cap" class="w-10 h-10 text-white"></i>
+          </div>
+          <h1 class="font-heading text-3xl md:text-4xl lg:text-5xl text-white tracking-tight animate-in animate-delay-1 leading-tight">
+            Pengumuman Kelulusan<br>
+            <span class="text-blue-200">SDN Susukan 08 Pagi</span>
+          </h1>
+          <p class="text-indigo-100 mt-4 text-sm md:text-base font-medium tracking-wide uppercase animate-in animate-delay-2">
+            Tahun Ajaran 2025/2026
+          </p>
+        </div>
+      </header>
+
+      <main id="main-content" class="flex-1 max-w-3xl mx-auto px-6 pb-12 w-full animate-in animate-delay-2">
+        <section class="bg-white rounded-3xl shadow-sm border border-slate-100 p-8 md:p-10 mb-8 relative overflow-hidden">
+          <div class="absolute top-6 left-6 text-slate-100 opacity-50 z-0">
+            <i data-lucide="quote" class="w-16 h-16"></i>
+          </div>
+          <div class="relative z-10">
+            <h2 class="font-heading text-xl md:text-2xl text-slate-800 mb-6 flex items-center gap-3 border-b border-slate-100 pb-4">
+              Sambutan Kepala Sekolah
+            </h2>
+            <div class="text-slate-600 leading-relaxed text-justify space-y-4 font-medium text-sm md:text-base">
+              <p>Assalamu'alaikum Warahmatullahi Wabarakatuh,</p>
+              <p>Puji syukur kita panjatkan kehadirat Allah SWT yang telah memberikan rahmat dan hidayah-Nya sehingga seluruh siswa kelas VI SDN Susukan 08 Pagi dapat menyelesaikan proses pembelajaran dengan baik pada Tahun Ajaran 2025/2026.</p>
+              <p>Kami mengucapkan selamat kepada seluruh siswa yang telah dinyatakan lulus. Kelulusan ini merupakan hasil dari kerja keras, ketekunan, serta doa dari orang tua dan guru. Semoga ilmu yang telah diperoleh selama menempuh pendidikan di SDN Susukan 08 Pagi dapat menjadi bekal yang bermanfaat untuk melanjutkan pendidikan ke jenjang yang lebih tinggi.</p>
+              <p>Kepada orang tua dan wali murid, kami mengucapkan terima kasih atas kepercayaan dan kerja sama yang telah terjalin selama ini. Mari kita terus mendukung putra-putri kita untuk meraih cita-cita mereka.</p>
+              <p>Wassalamu'alaikum Warahmatullahi Wabarakatuh.</p>
+              <div class="mt-8 pt-4 text-right">
+                <p class="font-heading text-slate-800 font-semibold">Kepala SDN Susukan 08 Pagi</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <div class="text-center">
+          <button onclick="showCheckPage()" class="group inline-flex items-center gap-3 bg-blue-600 hover:bg-blue-700 text-white font-semibold text-lg px-8 py-4 rounded-full shadow-[0_8px_20px_rgb(37,99,235,0.2)] hover:shadow-[0_12px_25px_rgb(37,99,235,0.3)] transition-all transform hover:-translate-y-1"> 
+            <i data-lucide="search" class="w-5 h-5 group-hover:scale-110 transition-transform"></i> 
+            Cek Kelulusan Siswa 
+          </button>
+        </div>
+      </main>
+
+      <footer class="text-slate-400 text-center py-6 text-sm mt-auto border-t border-slate-200 bg-white/50">
+        © 2026 SDN Susukan 08 Pagi. Semua Hak Dilindungi.
+      </footer>
+    </div>
+
+    <!-- HALAMAN CEK KELULUSAN -->
+    <div id="page-check" class="min-h-screen flex flex-col hidden bg-slate-50">
+      <header class="bg-white border-b border-slate-200 sticky top-0 z-50">
+        <div class="max-w-3xl mx-auto px-6 py-4 flex items-center justify-between">
+          <div class="flex items-center gap-4">
+            <button onclick="showHomePage()" class="text-slate-400 hover:text-slate-700 bg-slate-50 hover:bg-slate-100 p-2.5 rounded-full transition-all"> 
+              <i data-lucide="arrow-left" class="w-5 h-5"></i> 
+            </button>
+            <h1 class="font-heading text-lg text-slate-800">Cek Status Kelulusan</h1>
+          </div>
+        </div>
+      </header>
+
+      <main class="flex-1 max-w-2xl mx-auto px-6 py-12 w-full animate-in">
+        <div class="bg-white rounded-3xl shadow-sm border border-slate-100 p-8 md:p-10 relative">
+          
+          <div class="text-center mb-8">
+            <div class="inline-flex items-center justify-center w-16 h-16 bg-blue-50 text-blue-600 rounded-2xl mb-4">
+              <i data-lucide="scan-line" class="w-8 h-8"></i>
+            </div>
+            <h2 class="font-heading text-2xl text-slate-800">Masukkan NISN</h2>
+            <p class="text-slate-500 text-sm mt-2">Ketik Nomor Induk Siswa Nasional untuk melihat hasil</p>
+          </div>
+          
+          <form id="check-form" class="space-y-5" onsubmit="handleCheck(event)">
+            <div class="relative z-20">
+              <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+                <i data-lucide="hash" class="w-5 h-5 text-slate-400"></i>
+              </div>
+              <input type="text" id="nisn-input" placeholder="Contoh: 93738476" class="w-full pl-11 pr-4 py-4 bg-slate-50 border border-slate-200 rounded-2xl focus:bg-white focus:border-blue-500 focus:ring-4 focus:ring-blue-500/10 outline-none transition-all text-slate-700 font-semibold tracking-widest text-center text-lg"> 
+            </div>
+            <button type="submit" class="w-full bg-slate-800 hover:bg-slate-900 text-white font-semibold py-4 rounded-2xl shadow-md transition-all flex items-center justify-center gap-2 relative z-20"> 
+              Lihat Hasil <i data-lucide="arrow-right" class="w-4 h-4"></i>
+            </button>
+          </form>
+
+          <!-- Area Hasil -->
+          <div id="result-area" class="hidden"></div>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <script>
+    lucide.createIcons();
+
+    const students = [
+      { nama: "KURYANA", nisn: "93738476", status: "Lulus" },
+      { nama: "ANNICO", nisn: "93738477", status: "Lulus" },
+      { nama: "SOFI", nisn: "93738478", status: "Lulus" },
+      { nama: "DESI", nisn: "93738479", status: "Lulus" },
+      { nama: "ELSA", nisn: "93738480", status: "Lulus" },
+      { nama: "HARIS", nisn: "93738481", status: "Lulus" },
+      { nama: "AGUNG", nisn: "93738482", status: "Lulus" },
+      { nama: "EKO", nisn: "93738483", status: "Lulus" },
+      { nama: "FIAN", nisn: "93738484", status: "Lulus" }
+    ];
+
+    function showCheckPage() {
+      document.getElementById('page-home').classList.add('hidden');
+      document.getElementById('page-check').classList.remove('hidden');
+      document.getElementById('result-area').classList.add('hidden');
+      document.getElementById('nisn-input').value = '';
+    }
+
+    function showHomePage() {
+      document.getElementById('page-check').classList.add('hidden');
+      document.getElementById('page-home').classList.remove('hidden');
+    }
+
+    function showNotification(msg, type) {
+      const styles = { 
+        warning: 'bg-amber-50 border-amber-200 text-amber-800 mt-6', 
+        error: 'bg-rose-50 border-rose-200 text-rose-800 mt-6' 
+      };
+      const icons = { warning: 'alert-circle', error: 'x-circle' };
+      return `
+        <div class="border ${styles[type]} animate-in rounded-2xl p-5 flex items-start gap-4">
+          <i data-lucide="${icons[type]}" class="w-6 h-6 shrink-0 mt-0.5"></i>
+          <p class="font-medium text-sm md:text-base">${msg}</p>
+        </div>
+      `;
+    }
+
+    function tembakTerompetMeriah() {
+      const duration = 5 * 1000;
+      const animationEnd = Date.now() + duration;
+      const defaults = { startVelocity: 30, spread: 360, ticks: 60, zIndex: 9999 };
+
+      function randomInRange(min, max) { return Math.random() * (max - min) + min; }
+
+      confetti({ particleCount: 150, spread: 100, origin: { y: 0.8 }, colors: ['#10b981', '#3b82f6', '#f59e0b', '#ef4444', '#8b5cf6', '#FFD700'] });
+
+      const interval = setInterval(function() {
+        const timeLeft = animationEnd - Date.now();
+        if (timeLeft <= 0) return clearInterval(interval);
+        const particleCount = 50 * (timeLeft / duration);
+        
+        confetti(Object.assign({}, defaults, { particleCount, origin: { x: randomInRange(0.1, 0.3), y: Math.random() - 0.2 }, colors: ['#10b981', '#FFD700', '#3b82f6'] }));
+        confetti(Object.assign({}, defaults, { particleCount, origin: { x: randomInRange(0.7, 0.9), y: Math.random() - 0.2 }, colors: ['#f59e0b', '#ef4444', '#8b5cf6'] }));
+      }, 250);
+    }
+
+    function renderStudent(s) {
+      const isLulus = s.status === 'Lulus';
+      
+      if (isLulus) {
+        return `
+          <!-- overflow-hidden DIHAPUS dari sini agar zig-zag tidak terpotong -->
+          <div class="kertas-sobek animate-rip p-8 text-center relative z-10">
+            
+            <!-- Wrapper baru khusus untuk membungkus aura bercahaya -->
+            <div class="absolute inset-0 overflow-hidden pointer-events-none" style="border-radius: 0 0 2rem 2rem;">
+              <div class="absolute -top-10 -right-10 w-40 h-40 bg-emerald-400/20 rounded-full blur-3xl"></div>
+              <div class="absolute bottom-0 -left-10 w-32 h-32 bg-yellow-300/20 rounded-full blur-2xl"></div>
+            </div>
+            
+            <div class="absolute top-10 left-10 text-xl animate-bounce" style="animation-duration: 2s;">✨</div>
+            <div class="absolute bottom-20 right-10 text-2xl animate-bounce" style="animation-duration: 3s;">🎉</div>
+            
+            <!-- Seluruh konten diberi relative & z-10 agar selalu di atas background aura -->
+            <div class="relative z-10">
+              <div class="inline-flex items-center justify-center w-24 h-24 bg-gradient-to-br from-emerald-100 to-emerald-200 text-emerald-600 rounded-full mb-6 shadow-inner animate-tada">
+                <i data-lucide="check-circle-2" class="w-12 h-12"></i>
+              </div>
+              
+              <div class="space-y-5">
+                <div>
+                  <p class="text-xs font-bold text-emerald-600/70 uppercase tracking-widest mb-1">Nama Siswa</p>
+                  <p class="font-heading text-2xl text-slate-800 drop-shadow-sm">${s.nama}</p>
+                </div>
+                
+                <div>
+                  <p class="text-xs font-bold text-emerald-600/70 uppercase tracking-widest mb-1">NISN</p>
+                  <p class="font-semibold text-slate-600 text-lg">${s.nisn}</p>
+                </div>
+                
+                <div class="pt-6 mt-4 border-t border-emerald-200/50">
+                  <p class="text-xs font-bold text-slate-400 uppercase tracking-widest mb-4">Status Kelulusan</p>
+                  <div class="inline-block relative">
+                    <span class="relative z-10 inline-flex items-center gap-2 px-8 py-3 rounded-full text-white font-bold text-lg bg-emerald-500 animate-glow">
+                      ${s.status} 🏆
+                    </span>
+                  </div>
+                </div>
+                
+                <p class="mt-8 text-sm text-emerald-700 font-semibold bg-emerald-50/80 p-3 rounded-xl inline-block shadow-sm border border-emerald-100">
+                  Selamat! Teruslah berprestasi di jenjang selanjutnya. 🎓
+                </p>
+              </div>
+            </div>
+          </div>
+        `;
+      } else {
+        return `
+          <div class="border border-rose-200 bg-rose-50/50 rounded-3xl p-8 text-center relative overflow-hidden mt-6 animate-in">
+            <div class="inline-flex items-center justify-center w-20 h-20 bg-rose-100 text-rose-600 rounded-full mb-6">
+              <i data-lucide="x-circle" class="w-10 h-10"></i>
+            </div>
+            <div class="space-y-4 z-10 relative">
+              <div>
+                <p class="text-xs font-bold text-slate-400 uppercase tracking-widest mb-1">Nama Siswa</p>
+                <p class="font-heading text-xl text-slate-800">${s.nama}</p>
+              </div>
+              <div>
+                <p class="text-xs font-bold text-slate-400 uppercase tracking-widest mb-1">NISN</p>
+                <p class="font-semibold text-slate-600">${s.nisn}</p>
+              </div>
+              <div class="pt-4 border-t border-rose-200/50">
+                <p class="text-xs font-bold text-slate-400 uppercase tracking-widest mb-3">Status</p>
+                <span class="inline-flex items-center gap-1.5 px-6 py-2.5 rounded-full text-white font-semibold bg-rose-500 shadow-[0_4px_12px_rgb(244,63,94,0.3)]">
+                  ${s.status}
+                </span>
+              </div>
+            </div>
+          </div>
+        `;
+      }
+    }
+
+    function renderAllStudents() {
+      let rows = students.map((s, i) => `
+        <tr class="border-b border-slate-100 last:border-0 hover:bg-slate-50/50 transition-colors">
+          <td class="px-4 py-3 text-slate-500 text-sm w-12 text-center">${i+1}</td>
+          <td class="px-4 py-3 font-medium text-slate-700">${s.nama}</td>
+          <td class="px-4 py-3 text-slate-500 font-mono text-sm">${s.nisn}</td>
+          <td class="px-4 py-3 text-right">
+            <span class="inline-flex px-2.5 py-1 rounded-full text-[11px] font-bold tracking-wide uppercase ${s.status === 'Lulus' ? 'bg-emerald-100 text-emerald-700' : 'bg-rose-100 text-rose-700'}">${s.status}</span>
+          </td>
+        </tr>
+      `).join('');
+
+      return `
+        <div class="border border-slate-200 bg-white rounded-3xl p-6 shadow-sm mt-6 animate-in">
+          <div class="flex items-center gap-3 mb-6 pb-4 border-b border-slate-100">
+            <div class="p-2 bg-indigo-50 text-indigo-600 rounded-lg"><i data-lucide="database" class="w-5 h-5"></i></div>
+            <h3 class="font-heading text-slate-800 font-semibold text-lg">Mode Admin: Data Kelulusan</h3>
+          </div>
+          <div class="overflow-x-auto">
+            <table class="w-full text-left">
+              <thead class="bg-slate-50 text-slate-500 text-xs uppercase tracking-wider font-semibold">
+                <tr>
+                  <th class="px-4 py-3 rounded-l-lg text-center">No</th>
+                  <th class="px-4 py-3">Nama Lengkap</th>
+                  <th class="px-4 py-3">NISN</th>
+                  <th class="px-4 py-3 rounded-r-lg text-right">Status</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-slate-50">
+                ${rows}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      `;
+    }
+
+    function handleCheck(e) {
+      e.preventDefault();
+      const input = document.getElementById('nisn-input').value.trim();
+      const resultArea = document.getElementById('result-area');
+      
+      resultArea.innerHTML = '';
+      resultArea.classList.remove('hidden');
+
+      if (!input) { 
+        resultArea.innerHTML = showNotification('Silakan masukkan NISN terlebih dahulu.', 'warning'); 
+        lucide.createIcons();
+        return; 
+      }
+      
+      if (input.toUpperCase() === 'ADMIN') { 
+        resultArea.innerHTML = renderAllStudents(); 
+        lucide.createIcons();
+        return; 
+      }
+      
+      if (input.toUpperCase().startsWith('ADMIN ')) {
+        const adminNisn = input.substring(6).trim();
+        const student = students.find(s => s.nisn === adminNisn);
+        resultArea.innerHTML = student ? renderStudent(student) : showNotification('Data NISN tidak ditemukan dalam database.', 'error');
+        lucide.createIcons();
+        
+        if (student && student.status === 'Lulus') setTimeout(tembakTerompetMeriah, 500);
+        return;
+      }
+
+      const student = students.find(s => s.nisn === input);
+      if (student) {
+        resultArea.innerHTML = renderStudent(student);
+        lucide.createIcons();
+        
+        if (student.status === 'Lulus') {
+          setTimeout(tembakTerompetMeriah, 500);
+        }
+      } else {
+        resultArea.innerHTML = showNotification('NISN tidak ditemukan. Harap periksa kembali angka yang Anda masukkan.', 'error');
+        lucide.createIcons();
+      }
+    }
+  </script>
+</body>
+</html>
